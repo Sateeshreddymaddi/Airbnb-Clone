@@ -203,16 +203,11 @@ if (process.env.NODE_ENV !== "production") {
     next();
   });
   
-  // Optional debug
-  // app.use((req, res, next) => {
-  //   console.log("User in session:", req.user);
-  //   next();
-  // });
-  
+
   // ====== Routes ======
   app.use("/listings", listingRouter);
   app.use("/listings/:id/reviews", reviewRouter);
-  app.use("/", userRouter);
+  app.use("/", listingRouter);
   
   // ====== Catch All & Error Handling ======
   app.all("*", (req, res, next) => {
